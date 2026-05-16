@@ -127,11 +127,11 @@ For each profile's `SOUL.md`:
 5. Include useful Hermes skills/toolsets.
 6. Include profile workspace paths.
 
-## Phase 4 — Root Routing Docs
+## Phase 4 — Default Profile Routing Note
 
-Patch the default profile's `~/.hermes/SOUL.md` with a short council map so Telegram/default sessions understand names like `Leia`, `R2`, `Anakin`, etc.
+After creating profiles, show the user an optional routing note they can add to their default profile if they want Telegram/default sessions to recognize names like `Leia`, `R2`, or `Anakin`.
 
-Pattern:
+Suggested note:
 
 ```md
 ## Council profiles
@@ -140,10 +140,10 @@ Pattern:
 - `r2` — research and intelligence.
 - `anakin` — coding and technical work.
 
-When the user starts a task with one of these names, treat it as an instruction to use that profile/persona. For large standalone work, run `hermes -p <profile> chat -q "..."` and summarize the result back.
+When a task starts with one of these names, use the matching profile/persona. For large standalone work, run `hermes -p <profile> chat -q "..."` and summarize the result back.
 ```
 
-Do **not** start multiple gateways with the same Telegram bot unless the user intentionally configured separate bots/channels. Usually default Telegram gateway stays active and profiles are invoked by CLI/subprocess as needed.
+Do not start multiple gateways with the same Telegram bot unless the user intentionally configured separate bots/channels. Usually the default Telegram gateway stays active and profiles are invoked by CLI/subprocess as needed.
 
 ## Phase 5 — Self-Improvement
 
@@ -216,19 +216,13 @@ If tap layout compatibility varies by Hermes version, direct raw `SKILL.md` inst
 
 ## One-Shot Recipe: migrate old OpenClaw council
 
-1. Locate old agents:
-   ```bash
-   find ~/.openclaw -path '*agents*' -name SOUL.md -o -name AGENTS.md
-   ```
+1. Locate old council/persona files using normal file search tools.
 2. Create matching Hermes profiles:
    ```bash
    hermes profile create leia --clone
    hermes profile create r2 --clone
    ```
-3. Copy originals into:
-   ```text
-   ~/.hermes/profiles/<name>/references/openclaw-original/
-   ```
+3. Preserve original persona docs under each profile's reference folder if the user wants migration fidelity.
 4. Write a Hermes-native active `SOUL.md` that references originals as historical material.
 5. Verify with `hermes profile list` and `hermes profile show <name>`.
 
@@ -239,6 +233,6 @@ If tap layout compatibility varies by Hermes version, direct raw `SKILL.md` inst
 - [ ] Hermes profiles created, not just folders
 - [ ] Active `SOUL.md` is Hermes-native
 - [ ] Original files preserved under references when migrating
-- [ ] Default profile routing hints patched if requested
+- [ ] Default profile routing hints were suggested if requested
 - [ ] No secrets copied into repo/skill/profile files
 - [ ] GitHub sharing instructions included
