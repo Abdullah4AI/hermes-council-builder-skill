@@ -6,20 +6,20 @@ It helps you design and create a personalized team of specialized Hermes profile
 
 ## Install
 
-Direct install:
+Recommended direct install:
 
 ```bash
-hermes skills install https://raw.githubusercontent.com/Abdullah4AI/hermes-council-builder-skill/main/SKILL.md --name hermes-council-builder
+hermes skills install https://raw.githubusercontent.com/Abdullah4AI/hermes-council-builder-skill/main/hermes-council-builder/SKILL.md --name hermes-council-builder
 ```
 
-Or add as a tap:
+Recommended tap install:
 
 ```bash
 hermes skills tap add Abdullah4AI/hermes-council-builder-skill
 hermes skills install Abdullah4AI/hermes-council-builder-skill/hermes-council-builder
 ```
 
-If tap layout differs in your Hermes version, use the direct raw `SKILL.md` install.
+The tap route installs the full skill directory including scripts, references, and assets.
 
 ## Use
 
@@ -37,8 +37,10 @@ Build me a council of agents for my workflow.
 
 ## Script
 
+After installing via tap, the script is included with the skill. In this repo you can run:
+
 ```bash
-python3 scripts/init-hermes-council.py --council-name my-council --profiles researcher builder operator
+python3 hermes-council-builder/scripts/init-hermes-council.py --council-name my-council --profiles researcher builder operator
 ```
 
 The script creates Hermes profiles under:
@@ -55,4 +57,4 @@ OpenClaw had ClawHub. Hermes has GitHub-hosted skills and taps:
 - `hermes skills tap add owner/repo`
 - `hermes skills publish PATH` for registry publishing when configured
 
-This repo is structured to be usable as a GitHub-hosted skill.
+This repo is structured to be usable as a GitHub-hosted skill tap.
