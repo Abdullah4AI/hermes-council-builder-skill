@@ -35,20 +35,6 @@ Then ask:
 Build me a council of agents for my workflow.
 ```
 
-## Script
-
-After installing via tap, the script is included with the skill. In this repo you can run:
-
-```bash
-python3 hermes-council-builder/scripts/init-hermes-council.py --council-name my-council --profiles researcher builder operator
-```
-
-The script creates Hermes profiles under:
-
-```text
-~/.hermes/profiles/<name>/
-```
-
 ## Sharing vs OpenClaw ClawHub
 
 OpenClaw had ClawHub. Hermes has GitHub-hosted skills and taps:

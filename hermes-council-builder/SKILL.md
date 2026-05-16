@@ -94,22 +94,15 @@ Get explicit approval before writing profiles.
 
 ## Phase 3 — Building Hermes Profiles
 
-Prefer the included script:
+Prefer standard Hermes CLI commands:
 
 ```bash
-python3 scripts/init-hermes-council.py --council-name my-council --profiles leia r2 anakin
+hermes profile create leia --clone
+hermes profile create r2 --clone
+hermes profile create anakin --clone
 ```
 
-Useful flags:
-
-```bash
---clone-default        # clone default profile config into each profile (default)
---no-clone            # create from scratch if supported by installed Hermes
---force               # overwrite generated SOUL.md/profile docs
---dry-run             # show what would be created
-```
-
-The script creates/updates:
+For each approved profile, create/update:
 
 ```text
 ~/.hermes/profiles/<name>/SOUL.md
@@ -172,7 +165,6 @@ After building:
 ```bash
 hermes profile list
 hermes profile show <profile>
-python3 scripts/validate-council.py ~/.hermes/profiles <profile>...
 ```
 
 Manual checks:

@@ -7,13 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Validate skill frontmatter and scripts
+      - name: Validate skill frontmatter
         run: |
           python - <<'PY'
-          import pathlib, py_compile
+          import pathlib
           root = pathlib.Path('hermes-council-builder')
           content = (root / 'SKILL.md').read_text()
           assert content.startswith('---')
@@ -28,7 +25,5 @@ jobs:
           assert fields.get('name') == 'hermes-council-builder'
           assert 'description' in fields and len(fields['description']) <= 1024
           assert len(content) <= 100000
-          py_compile.compile(str(root / 'scripts/init-hermes-council.py'), doraise=True)
-          py_compile.compile(str(root / 'scripts/validate-council.py'), doraise=True)
           print('ok')
           PY
